@@ -1,0 +1,551 @@
+# Creat a Hello.kv file in the path you run your script
+
+## this is for Hello.kv
+# First layer
+BoxLayout:
+	token_sub			:	token_sub
+	key_words			:	key_words
+	visited_page		:	visited_pages
+	country_all			:	scroll_country_all
+	history_all_vist	: 	history_all_vist
+	today_vist			:	today_vist
+	country_today		:	country_today
+	provinves_today		:	provinves_today
+	refresh_b			:	refresh_b
+	visit_line			:	visit_line
+	comes_from			:	comes_from
+	search_engine		:	search_engine
+	new_visitor			:	new_visitor
+	padding: self.width * 0.005
+	spacing: self.width * 0.005
+	canvas:
+		Color:
+			rgba: .4, .4 , .8, .9
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: 'bg.png'
+
+	# Second layer, left
+	BoxLayout:
+		padding: self.width * 0.005
+		spacing: self.width * 0.005
+		size_hint: 1, 1
+		orientation: 'vertical'
+
+		# Therid Layer 1
+		BoxLayout:
+			padding: self.width * 0.005
+			spacing: self.width * 0.005
+
+			size_hint: 1, 7
+			orientation: 'vertical'
+
+			BoxLayout:
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+				canvas:
+					Color:
+						rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+					Rectangle:
+						pos: self.pos
+						size: self.size
+			    Button:
+					id: token_sub
+					background_color: 0.2745098, 0.5098039, 0.7058824,  .7
+					halign: 'left'
+			        text: "搜索词"
+
+			BoxLayout:
+				size_hint: 1, 3
+				orientation: 'vertical'
+		        ScrollView:
+		            do_scroll_x: True
+					do_scroll_y: True
+					Label:
+						id: key_words
+		                halign: "left"
+		                color: 0, 1, 1, .8
+		                size_hint_y: None
+		                height: self.texture_size[1]
+		                text_size: self.width, None
+		                padding: 10, 10
+						text: 'loading'
+
+
+		# Therid Layer 2
+		BoxLayout:
+			size_hint: 1, 10
+			padding: self.width * 0.005
+			spacing: self.width * 0.005
+
+
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.01
+
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    MDLabel:
+						halign: 'center'
+						color: 1, 1, 1, 1
+				        text: "新老访客(周)"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0, 1, 0,  0
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    MDLabel:
+						id: new_visitor
+						halign: 'center'
+						color: 0, 1, 1, .8
+				        text: "50%"
+
+
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.01
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    MDLabel:
+						halign: 'center'
+						color: 1, 1, 1, 1
+				        text: "国家或地区"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0, 1, 0,  0
+						Rectangle:
+							pos: self.pos
+							size: self.size
+			        ScrollView:
+			            do_scroll_x: False
+			            do_scroll_y: True
+			            Label:
+			                id: scroll_country_all
+			                halign: "left"
+			                color: 0, 1, 1, .8
+			                size_hint_y: None
+			                height: self.texture_size[1]
+			                text_size: self.width, None
+			                padding: 10, 10
+			                text:
+			                    '没变??'
+
+		# Therid Layer 3
+		BoxLayout:
+			size_hint: 1, 10
+			orientation: 'vertical'
+			padding: self.width * 0.005
+			spacing: self.width * 0.005
+
+
+			BoxLayout:
+				canvas:
+					Color:
+						rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+					Rectangle:
+						pos: self.pos
+						size: self.size
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+			    MDLabel:
+					halign: 'center'
+					color: 1,1,1,1
+			        text: "最近几天访问记录"
+
+			BoxLayout:
+				id: visit_line
+				size_hint: 1, 3
+				orientation: 'vertical'
+
+				point: [0,0, 10, 100]
+				size: self.size
+				pos: self.pos
+
+
+
+
+
+	# Second layer, middle
+	BoxLayout:
+		padding: self.width * 0.005
+		spacing: self.width * 0.005
+		size_hint: 2, 1
+		orientation: 'vertical'
+
+		# Therid Layer 1
+		BoxLayout:
+			padding: self.width * 0.05, 0, self.width * 0.05, 0
+			spacing: self.width * 0.05
+
+			size_hint: 1, 1
+
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.005
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    MDLabel:
+						halign: 'center'
+						color: 1, 1,1, 1
+				        text: "历史总访问数:"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+
+				    MDLabel:
+						id: history_all_vist
+						color: 0, 1, 1, .8
+						halign: 'center'
+				        text: "100000+"
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.005
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    MDLabel:
+						halign: 'center'
+						color: 1, 1, 1, 1
+				        text: "今日访问数:"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+
+				    MDLabel:
+						id: today_vist
+						color: 0, 1,1, .7
+						halign: 'center'
+				        text: "305"
+
+
+		# Therid Layer 2
+		BoxLayout:
+			size_hint: 1, 4
+			orientation: 'vertical'
+			canvas:
+				Color:
+					rgba: 1, 1, 1,  .7
+				Rectangle:
+					pos: self.pos
+					size: self.size
+					source: 'map.png'
+		    MDLabel:
+				halign: 'center'
+		        text: "放个大大大的地图在这里"
+
+
+		# Therid Layer 3
+		BoxLayout:
+			size_hint: 1, 1
+
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.005
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    MDLabel:
+						halign: 'center'
+						color: 1,1,1,1
+				        text: "访问国家"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+
+			        ScrollView:
+			            do_scroll_x: False
+			            do_scroll_y: True
+			            Label:
+			                id: country_today
+			                halign: "left"
+			                size_hint_y: None
+							color: 0, 1,1, .7
+			                height: self.texture_size[1]
+			                text_size: self.width, None
+			                padding: 10, 10
+			                text:
+			                    'Please refresh'
+
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.005
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    Label:
+						halign: 'center'
+				        text: "访问省份"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+			        ScrollView:
+			            do_scroll_x: False
+			            do_scroll_y: True
+			            Label:
+			                id: provinves_today
+			                halign: "left"
+			                color: 0, 1, 1, .7
+			                size_hint_y: None
+			                height: self.texture_size[1]
+			                text_size: self.width, None
+			                padding: 10, 10
+			                text:
+			                    'Please refresh'
+
+
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.005
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    MDLabel:
+						halign: 'center'
+						color: 1, 1, 1, 1
+				        text: "没想好放啥x3"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+
+				    MDLabel:
+						halign: 'center'
+						color: 0, 1, 1, .8
+				        text: "The Therid Fourth; body"
+
+
+	# Second layer, right
+	BoxLayout:
+		padding: self.width * 0.005
+		spacing: self.width * 0.005
+		size_hint: 1, 1
+		orientation: 'vertical'
+
+		# Therid Layer 1
+		BoxLayout:
+			size_hint: 1, 7
+			orientation: 'vertical'
+
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.005
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    Label:
+						halign: 'left'
+				        text: "来源网站:"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+
+			        ScrollView:
+			            do_scroll_x: False
+			            do_scroll_y: True
+			            Label:
+			                id: comes_from
+			                halign: "left"
+			                color: 0, 1, 1, .8
+			                size_hint_y: None
+			                height: self.texture_size[1]
+			                text_size: self.width, None
+			                padding: 10, 10
+			                text:
+			                    'Please refresh...'
+
+		# Therid Layer 2
+		BoxLayout:
+			size_hint: 1, 10
+			orientation: 'vertical'
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.005
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    Label:
+						halign: 'left'
+				        text: "访问页面"
+
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+
+			        ScrollView:
+			            do_scroll_x: False
+			            do_scroll_y: True
+			            Label:
+			                id: visited_pages
+			                halign: "left"
+			                color: 0, 1, 1, .8
+			                size_hint_y: None
+			                height: self.texture_size[1]
+			                text_size: self.width, None
+			                padding: 10, 10
+			                text:
+			                    'Please refresh'
+
+		# Therid Layer 3
+
+		BoxLayout:
+			size_hint: 1, 10
+			orientation: 'vertical'
+			BoxLayout:
+				padding: self.width * 0.005
+				spacing: self.width * 0.005
+
+				size_hint: 1, 1
+				orientation: 'vertical'
+
+				BoxLayout:
+
+					size_hint: 1, 1
+					orientation: 'vertical'
+					canvas:
+						Color:
+							rgba: 0.2745098, 0.5098039, 0.7058824,  .7
+						Rectangle:
+							pos: self.pos
+							size: self.size
+				    Button:
+						id: refresh_b
+						background_color: 0.2745098, 0.5098039, 0.7058824,  .7
+						halign: 'left'
+				        text: "主要搜索引擎"
+						#on_release:		root.Visited_page()
+				BoxLayout:
+					size_hint: 1, 3
+					orientation: 'vertical'
+
+			        ScrollView:
+			            do_scroll_x: False
+			            do_scroll_y: True
+			            Label:
+			                id: search_engine
+			                halign: "left"
+			                color: 0, 1, 1, .8
+			                size_hint_y: None
+			                height: self.texture_size[1]
+			                text_size: self.width, None
+			                padding: 10, 10
+			                text:
+			                    'Please refresh...'
