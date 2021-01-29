@@ -29,7 +29,7 @@ from BarChart import BarChart
 
 class HomePanel(BoxLayout):
 	ID = str('000')
-	token = open('Token.log','r').read()
+	token = open('Token.log','r').read().replace('\n','')
 
 	def build(self):
 		orientation = 'vertical'
@@ -37,12 +37,9 @@ class HomePanel(BoxLayout):
 
 	def Token(self):
 		token = Clipboard.paste()
-		print("Clipboard is ", Clipboard.paste())
 		f = open('Token.log','w')
 		f.write(token)
 		f.close()
-		self.token = open('Token.log','r').read()
-		print(self.token)
 		self.run()
 
 	def ID_get(self):
@@ -327,6 +324,7 @@ class HomePanel(BoxLayout):
 		self.Body_panel.search_engine.text = Result
 
 	def run(self):
+		self.token = open('Token.log','r').read().replace('\n','')
 		self.Key_words()
 		self.Visited_page()
 		self.New_visitor()

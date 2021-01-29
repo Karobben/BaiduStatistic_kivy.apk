@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = "BaiduStat"
+title = "Baidu Statistic"
 
 # (str) Package name
 package.name = BaiduStat
@@ -28,7 +28,7 @@ source.include_exts =
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 1.2
+version = 1.3
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -46,7 +46,7 @@ requirements = python3==3.7.5, kivy, 	kivymd, plyer, pytube3, prettytable
 #garden_requirements =
 
 # (str) Presplash of the application
-#presplash.filename = %(source.dir)s/123.png
+presplash.filename = logo.png
 
 # (str) Icon of the application
 icon.filename = favicon.ico
