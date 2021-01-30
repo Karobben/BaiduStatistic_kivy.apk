@@ -194,7 +194,11 @@ class HomePanel(BoxLayout):
 			Data = Data['result']["items"][1]
 			List = []
 			for i in Data:
-				List += [i[0]]
+				Num = i[0]
+				if i[0] == '--':
+					Num = 0
+				List += [Num]
+			print("\n\n\n\n",List)
 			Box = BarChart()
 			Box.List = List
 			self.Body_panel.visit_line.clear_widgets()
