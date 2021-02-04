@@ -20,8 +20,8 @@ Clipboard = None
 from kivy.core.clipboard import Clipboard
 
 # Else
-import time, json
-TIME =time.strftime("%Y%m%d", time.localtime())
+import datetime, json
+TIME = str(datetime.date.today()).replace("-", '')
 
 
 from BarChart import BarChart
@@ -98,8 +98,9 @@ class HomePanel(BoxLayout):
 
 	def New_visitor(self):
 		TOKEN = self.token
+		TIME_F = str(datetime.date.today() -  datetime.timedelta(days=6)).replace('-', '')
 		url1 = "https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token="
-		url2 = TOKEN +"&site_id="+self.ID+"&start_date=" + str(int(TIME) - 6)
+		url2 = TOKEN +"&site_id="+self.ID+"&start_date=" + TIME_F
 		url3 = "&end_date="+TIME+"&metrics=new_visitor_ratio&method=source%2Fall%2Fa"
 		url = url1+url2+url3
 		request = UrlRequest(url, self.New_visitor_show, verify =False)
@@ -182,15 +183,18 @@ class HomePanel(BoxLayout):
 
 	def Recent_visit(self):
 	    TOKEN = self.token
+	    TIME_F = str(datetime.date.today() -  datetime.timedelta(days=30)).replace('-', '')
 	    url1 = "https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token="
-	    url2 = TOKEN +"&site_id=" + self.ID+ "&start_date=" + str(int(TIME)-13)
+	    url2 = TOKEN +"&site_id=" + self.ID+ "&start_date=" + TIME_F
 	    url3 = "&end_date="+TIME+"&metrics=pv_count&method=overview%2FgetTimeTrendRpt"
 	    url = url1+url2+url3
+	    print(url)
 	    request = UrlRequest(url, self.Recent_visit_show, verify =False)
 
 	def Recent_visit_show(self, request, data):
 		try:
 			Data = json.loads(data)
+			print("\n\n\n\n",Data)
 			Data = Data['result']["items"][1]
 			List = []
 			for i in Data:
