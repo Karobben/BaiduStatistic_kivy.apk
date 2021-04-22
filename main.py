@@ -49,9 +49,9 @@ class HomePanel(BoxLayout):
 		request = UrlRequest(url, self.ID_result, verify =False)
 
 	def ID_result(self, request, data):
+		print(data["list"][0]['site_id'],"\n\n")
 		try:
-			Data = json.loads(data)
-			ID = Data["list"][0]['site_id']
+			ID = data["list"][0]['site_id']
 			#print(Date)
 		except:
 		    ID = 'Error: 001; Can\'t access Page ID'
@@ -69,10 +69,9 @@ class HomePanel(BoxLayout):
 
 	def Key_words_show(self, request, data):
 		try:
-			Data = json.loads(data)
 			#print("\n\n\n\nLook here: ", Data)
 			#Data = ('??')#str(Data['result']['items'][0])
-			Data = Data['result']['items'][0]
+			Data = data['result']['items'][0]
 			Result = []
 			for i in Data:
 				Result += [i[0]['name']]
@@ -110,9 +109,8 @@ class HomePanel(BoxLayout):
 
 	def New_visitor_show(self, request, data):
 		try:
-			Data = json.loads(data)
 			#print("\n\n\n\nLook here: ", Data)
-			Data = str(Data['result']['pageSum'][0][0])+"%"
+			Data = str(data['result']['pageSum'][0][0])+"%"
 		except:
 		    Data = 'Error 003; Go check the New_visitor_show()'
 
@@ -132,9 +130,8 @@ class HomePanel(BoxLayout):
 
 	def Visited_page_show(self, request, data):
 		try:
-			Data = json.loads(data)
 			#print("\n\n\n\nLook here: ", Data)
-			Data = Data['result']
+			Data = data['result']
 			'''
 			for i, ii  in zip(Data['result']['items'][0], Data['result']['items'][1]):
 			    tmp = i[0]['name']+"    |    "+ str(ii[0])
@@ -171,7 +168,7 @@ class HomePanel(BoxLayout):
 		Location = ""
 		Num = 0
 		try:
-			Data = json.loads(data)
+			Data = data
 			for i, ii  in zip(Data['result']['items'][0], Data['result']['items'][1]):
 				tmp = i[0]['name']+": "+ str(ii[0])
 				Location +=  tmp + "\n"
@@ -193,7 +190,7 @@ class HomePanel(BoxLayout):
 
 	def Recent_visit_show(self, request, data):
 		try:
-			Data = json.loads(data)
+			Data = data
 			print("\n\n\n\n",Data)
 			Data = Data['result']["items"][1]
 			List = []
@@ -223,7 +220,7 @@ class HomePanel(BoxLayout):
 
 	def Country_count_show(self, request, data):
 		try:
-			Data = json.loads(data)
+			Data = data
 			Location = []
 			for i in Data['result']['items'][0]:
 				Location += [i[0]['name']]
@@ -254,7 +251,7 @@ class HomePanel(BoxLayout):
 
 	def Province_count_show(self, request, data):
 		try:
-			Data = json.loads(data)
+			Data = data
 			Location = []
 			for i in Data['result']['items'][0]:
 			    Location += [i[0]]
@@ -282,7 +279,7 @@ class HomePanel(BoxLayout):
 
 	def Comes_from_show(self, request, data):
 		try:
-			Data = json.loads(data)
+			Data = data
 			Data_n = Data['result']['items'][1]
 			Data_s = Data['result']['items'][0]
 			Result = {}
@@ -312,7 +309,7 @@ class HomePanel(BoxLayout):
 
 	def Search_engine_show(self, request, data):
 		try:
-			Data = json.loads(data)
+			Data = data
 			#try:
 			Data_n = Data['result']['items'][1]
 			Data_s = Data['result']['items'][0]
@@ -359,6 +356,7 @@ class HomePanel(BoxLayout):
 		self.add_widget(self.Body_panel)
 
 		self.ID_get()
+		print()
 
 		#self.Body_panel.visited_page.text = 'updating...'
 		self.Body_panel.refresh_b.on_release = self.run
